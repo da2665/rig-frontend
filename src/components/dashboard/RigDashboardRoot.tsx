@@ -2,7 +2,7 @@ import RigDashboardNavbar from "./RigDashboardNavbar";
 import "./RigDashboard.css";
 import RigDashboardContents from "./RigDashboardContents";
 
-function Home() {
+function RigDashboardRoot() {
     return (
         <div className="rig-dashboard">
             <RigDashboardNavbar />
@@ -11,4 +11,4 @@ function Home() {
     )
 }
 
-export default Home;
+export default RigDashboardRoot;

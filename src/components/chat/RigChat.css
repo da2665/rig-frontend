@@ -1,0 +1,33 @@
+.message-item {
+    padding:5px;
+    margin:5px;
+    width:475px;
+    height:auto;
+    color:white;
+    
+}
+
+.send-msg {
+    position:fixed;
+    bottom:0;
+    width:475px;
+    padding:5px;
+    margin:5px;
+}
+
+.rig-chat {
+    position: fixed;
+    width:100%;
+    height:100%;
+    background-color: black;
+}
+
+.messages {
+    position:fixed;
+    color: white;
+    display: block;
+    bottom:10px;
+    left:50%;
+    height:1%;
+    transform:translate(-50%,-50%);
+}

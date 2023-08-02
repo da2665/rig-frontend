@@ -1,20 +1,20 @@
-import "./Chat.css";
+import "./RigChat.css";
 
-interface MessageType {
+interface Message {
     uuid: string;
     sender: string;
     receiver: string;
     contents: string;
 }
 
-function Message(props: any) {
-    const message: MessageType = props.message;
+function RigChatMessage(props: any) {
+    const message: Message = props.message;
     return (
-        <div className="message-root card shadow-lg">
+        <div className="message-item card shadow-lg bg-dark">
             <h5>{message.sender}</h5>
             <p>{message.contents}</p>
         </div>
     )
 }
 
-export default Message;
+export default RigChatMessage;

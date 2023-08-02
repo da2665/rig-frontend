@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Message from "./RigChatMessage";
-import "./Chat.css";
+import RigChatMessage from "./RigChatMessage";
+import RigDashboardNavbar from "../dashboard/RigDashboardNavbar";
+import "../dashboard/RigDashboard.css";
+import "./RigChat.css";
 
-interface MessageType {
+interface Message {
     uuid: string;
     sender: string;
     receiver: string;
     contents: string;
 }
 
-function Chat() {
-    const [messages, setMessages] = useState<MessageType[]>();
+function RigChatRoot() {
+    const [messages, setMessages] = useState<Message[]>();
 
     useEffect(() => {
         axios.get("http://localhost:5000/getMessages").then((response) => {
@@ -21,16 +23,16 @@ function Chat() {
     }, [])
 
     return (
-        <div className="chat-root">
-            {messages ? messages.map((message: MessageType, i: number) => (
-                <div className="message">
-                    <Message key={i} message={message} />
-                </div>
-
-            )) : null}
+        <div className="rig-chat">
+            <RigDashboardNavbar />
+            <div className="messages">
+                {messages ? messages.map((message: Message, i: number) => (
+                    <RigChatMessage key={i} message={message} />
+                )) : null}
+            </div>
             <input type="input" className="send-msg form-control"></input>
         </div>
     )
 }
 
-export default Chat;
+export default RigChatRoot;

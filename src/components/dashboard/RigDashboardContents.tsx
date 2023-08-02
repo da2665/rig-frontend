@@ -29,12 +29,10 @@ function RigDashboardContents() {
 
     return (
         <div className="rig-dashboard-contents">
-            <h3>Rig v{process.env.REACT_APP_VERSION}</h3>
+            <h3>Rig v{process.env.REACT_APP_VERSION ? process.env.REACT_APP_VERSION : null }</h3>
             <div className="rig-dashboard-tiles">
             {tiles.map((tile, i) => (
-                
-                    <RigDashboardTile key={i} tile={tile} />
-                
+                <RigDashboardTile key={i} tile={tile} />
             ))}
             </div>
         </div>
