@@ -7,7 +7,8 @@
 
 .rig-navbar {
     position: fixed;
-    top:15px;
+    display: flex;
+    top:40px;
     left:50%;
     transform:translate(-50%,-50%);
     border-radius: 5px;
@@ -16,7 +17,7 @@
 .rig-dashboard-contents {
     color: white;
     position:fixed;
-    top:75px;
+    top:110px;
     left:50%;
     transform:translate(-50%,-50%);
 }
@@ -33,4 +34,9 @@
 .rig-tile {
     margin-bottom:15px;
     padding:10px;
+}
+
+.icon {
+    width:24px;
+    height:24px;
 }

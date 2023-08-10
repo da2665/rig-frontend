@@ -4,15 +4,14 @@
     width:475px;
     height:auto;
     color:white;
-    
 }
 
-.send-msg {
+.rig-chat-controls {
     position:fixed;
     bottom:0;
-    width:475px;
     padding:5px;
     margin:5px;
+    left:50%;
 }
 
 .rig-chat {
@@ -26,8 +25,11 @@
     position:fixed;
     color: white;
     display: block;
-    bottom:10px;
     left:50%;
-    height:1%;
+    top:60%;
+    height:100%;
+    padding:5px;
+    margin:5px;
     transform:translate(-50%,-50%);
+    overflow-y:scroll;
 }

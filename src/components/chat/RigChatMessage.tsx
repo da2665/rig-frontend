@@ -1,11 +1,5 @@
 import "./RigChat.css";
-
-interface Message {
-    uuid: string;
-    sender: string;
-    receiver: string;
-    contents: string;
-}
+import { Message } from "./Types";
 
 function RigChatMessage(props: any) {
     const message: Message = props.message;
