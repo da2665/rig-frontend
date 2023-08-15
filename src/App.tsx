@@ -1,24 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import RigDashboardRoot from './components/dashboard/RigDashboardRoot';
+import "bootstrap/dist/css/bootstrap.min.css";
+import RigChatRoot from './components/chat/RigChatRoot';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<RigDashboardRoot />} />
+          <Route path="/chat" element={<RigChatRoot />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,0 +1,52 @@
+.rig-dashboard {
+    position: fixed;
+    display: block;
+    width:100%;
+    height:100%;
+    background-color: black;
+}
+
+.rig-navbar {
+    position: fixed;
+    height: 100%;
+    width: 72px;
+}
+
+.rig-inner-navbar {
+    position: fixed;
+    display: block;
+    top:25%;
+    bottom:25%;
+}
+.rig-dashboard-contents {
+    color: white;
+    position:fixed;
+    top:110px;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+.rig-dashboard-tiles {
+    position: fixed;
+    width:500px;
+    display:block;
+    left:50%;
+    top:300px;
+    transform:translate(-50%,-50%);
+}
+
+.rig-tile {
+    margin-bottom:15px;
+    padding:10px;
+}
+
+.icon {
+    width:36px;
+    height:24px;
+}
+
+.btn {
+    width:72px;
+    height:40px;
+    padding:5px;
+}
