@@ -1,5 +1,6 @@
 .rig-dashboard {
     position: fixed;
+    display: block;
     width:100%;
     height:100%;
     background-color: black;
@@ -7,13 +8,16 @@
 
 .rig-navbar {
     position: fixed;
-    display: flex;
-    top:40px;
-    left:50%;
-    transform:translate(-50%,-50%);
-    border-radius: 5px;
+    height: 100%;
+    width: 72px;
 }
 
+.rig-inner-navbar {
+    position: fixed;
+    display: block;
+    top:25%;
+    bottom:25%;
+}
 .rig-dashboard-contents {
     color: white;
     position:fixed;
@@ -37,6 +41,12 @@
 }
 
 .icon {
-    width:24px;
+    width:36px;
     height:24px;
+}
+
+.btn {
+    width:72px;
+    height:40px;
+    padding:5px;
 }

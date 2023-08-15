@@ -16,7 +16,7 @@ function RigDashboardNavbar() {
     }
 
     function getIcon(module: string): any {
-        switch(module) {
+        switch (module) {
             case "Dashboard":
                 return faGauge
             case "Chat":
@@ -34,11 +34,11 @@ function RigDashboardNavbar() {
 
     return (
         <div className="bg-dark rig-navbar">
-            {modules.map((item: string, i: number) => (
-                <div className="rig-inner-navbar">
-                    <Link to={route(item)} key={i} className="text-decoration-none btn btn-link"><FontAwesomeIcon className="icon" icon={getIcon(item)} /><p></p> {item}</Link>
-                </div>
-            ))}
+            <div className="rig-inner-navbar">
+                {modules.map((item: string, i: number) => (
+                    <Link to={route(item)} key={i} className="text-decoration-none btn btn-dark"><FontAwesomeIcon className="icon" icon={getIcon(item)} /></Link>
+                ))}
+            </div>
         </div>
     )
 }
