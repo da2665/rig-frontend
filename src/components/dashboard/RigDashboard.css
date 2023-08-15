@@ -10,14 +10,9 @@
     position: fixed;
     height: 100%;
     width: 72px;
+    display: block;
 }
 
-.rig-inner-navbar {
-    position: fixed;
-    display: block;
-    top:25%;
-    bottom:25%;
-}
 .rig-dashboard-contents {
     color: white;
     position:fixed;
@@ -49,4 +44,13 @@
     width:72px;
     height:40px;
     padding:5px;
+    margin-top:5px;
+}
+
+.logo {
+    width:72px;
+    height:72px;
+    padding:5px;
+    margin-top:5px;
+    border-radius: 15px;
 }

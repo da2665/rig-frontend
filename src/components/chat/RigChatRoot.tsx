@@ -18,7 +18,7 @@ function RigChatRoot() {
 
     async function sendMessage(messageContent: string) {
         const request: Message = {
-            id: 1,
+            id: "1",
             sender: "dylan",
             receiver: "test",
             contents: messageContent
