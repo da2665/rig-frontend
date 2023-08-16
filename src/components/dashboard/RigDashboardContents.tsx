@@ -30,6 +30,7 @@ function RigDashboardContents() {
     return (
         <div className="rig-dashboard-contents">
             <h3>Rig v{process.env.REACT_APP_VERSION ? process.env.REACT_APP_VERSION : null }</h3>
+            <h4>Your Dashboard</h4>
             <div className="rig-dashboard-tiles">
             {tiles.map((tile, i) => (
                 <RigDashboardTile key={i} tile={tile} />

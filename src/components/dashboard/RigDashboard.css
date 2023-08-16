@@ -3,7 +3,7 @@
     display: block;
     width:100%;
     height:100%;
-    background-color: black;
+    background-color: rgba(0,0,0,0.9);
 }
 
 .rig-navbar {
@@ -11,6 +11,7 @@
     height: 100%;
     width: 72px;
     display: block;
+    background-color: black;
 }
 
 .rig-dashboard-contents {
@@ -45,6 +46,7 @@
     height:40px;
     padding:5px;
     margin-top:5px;
+    color:black;
 }
 
 .logo {
@@ -53,4 +55,5 @@
     padding:5px;
     margin-top:5px;
     border-radius: 15px;
+    border: 1px solid white;
 }

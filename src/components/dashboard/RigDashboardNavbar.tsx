@@ -34,10 +34,10 @@ function RigDashboardNavbar() {
     }
 
     return (
-        <div className="bg-dark rig-navbar">
+        <div className="rig-navbar">
             <img className="logo" src={logo} alt="Swipe Tech"></img>
-            {modules.map((item: string, i: number) => (
-                <Link to={route(item)} key={i} className="text-decoration-none btn btn-dark"><FontAwesomeIcon className="icon" icon={getIcon(item)} /></Link>
+            { modules.map((item: string, i: number) => (
+                <Link to={route(item)} key={i} className="text-decoration-none btn btn-link"><FontAwesomeIcon className="icon" icon={getIcon(item)} /></Link>
             ))}   
         </div>
     )
