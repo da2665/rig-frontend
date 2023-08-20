@@ -33,3 +33,22 @@
     transform:translate(-50%,-50%);
     overflow-y:scroll;
 }
+
+.rig-chat-navbar {
+    position: fixed;
+    height: 100%;
+    left:72px;
+    width: 144px;
+    display: block;
+    background-color: black;
+    color:white;
+    text-align:center;
+}
+
+.user-photo {
+    width:36px;
+    height:36px;
+    border-radius:36px;
+    border: 1px solid white;
+    text-align: left;
+}

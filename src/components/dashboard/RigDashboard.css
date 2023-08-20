@@ -17,7 +17,7 @@
 .rig-dashboard-contents {
     color: white;
     position:fixed;
-    top:110px;
+    top:30px;
     left:50%;
     transform:translate(-50%,-50%);
 }
@@ -39,9 +39,16 @@
 .icon {
     width:36px;
     height:24px;
+    color:gray;
 }
 
-.btn {
+.icon:hover {
+    width:36px;
+    height:24px;
+    color:white;
+}
+
+.nav-btn {
     width:72px;
     height:40px;
     padding:5px;
