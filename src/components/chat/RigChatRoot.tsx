@@ -5,6 +5,7 @@ import RigDashboardNavbar from "../dashboard/RigDashboardNavbar";
 import "../dashboard/RigDashboard.css";
 import "./RigChat.css";
 import { Message } from "./Types";
+import RigChatNavbar from "./RigChatNavbar";
 
 function RigChatRoot() {
     const [messages, setMessages] = useState<Message[]>();
@@ -18,12 +19,11 @@ function RigChatRoot() {
 
     async function sendMessage(messageContent: string) {
         const request: Message = {
-            id: 1,
+            id: 0,
             sender: "dylan",
             receiver: "test",
-            contents: messageContent
+            contents: "test"
         }
-        console.log(currentMessage);
         await axios.post("http://localhost:5000/sendMessage", request);
     }
 
@@ -34,8 +34,9 @@ function RigChatRoot() {
     return (
         <div className="rig-chat">  
             <RigDashboardNavbar />
+            <RigChatNavbar />
             <div className="messages">
-                {messages ? messages.map((message: Message, i: number) => (
+                { messages ? messages.map((message: Message, i: number) => (
                     <RigChatMessage key={i} message={message} />
                 )) : null}
             </div>
