@@ -6,13 +6,13 @@ import axios from "axios";
 
 function RigDashboardRoot() {
     // Get updates once Dashboard has loaded
-    useEffect(() => {
+    /* (useEffect(() => {
         axios.get("http://localhost:5000/getUpdates").then((response) => {
             if (response.data !== process.env.REACT_APP_VERSION) {
                 alert(`Updating Rig to v${response.data}`)
             }
         })
-    }, []);
+    }, []); */
 
     return (
         <div className="rig-dashboard">
