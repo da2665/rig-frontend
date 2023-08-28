@@ -11,6 +11,7 @@ function RigChatRoot() {
   const [messages, setMessages] = useState<Message[]>();
   const [currentMessage, setCurrentMessage] = useState<string>();
 
+  // TODO
   useEffect(() => {
     const interval = setInterval(() => {
       axios.get("http://localhost:5000/getMessages").then((response) => {
