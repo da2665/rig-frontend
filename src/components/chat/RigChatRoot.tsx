@@ -6,40 +6,35 @@ import "../dashboard/RigDashboard.css";
 import "./RigChat.css";
 import { Message } from "./Types";
 import RigChatNavbar from "./RigChatNavbar";
+import io from "socket.io-client";
 
 function RigChatRoot() {
-  const [messages, setMessages] = useState<Message[]>();
-  const [currentMessage, setCurrentMessage] = useState<string>();
+  const [messages, setMessages] = useState<Message[]>([]);
+  const socket = io(process.env.REACT_APP_WEBSOCKET_URL as string);
 
-  // TODO
   useEffect(() => {
-    const interval = setInterval(() => {
-      axios.get("http://localhost:5000/getMessages").then((response) => {
-        setMessages(response.data);
-      });
-    }, 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  });
-
-  async function sendMessage(messageContent: string) {
-    const request: Message = {
-      id: 0,
-      sender: "dylan",
-      receiver: "test",
-      contents: "test",
-      attachments: "https://www.google.com",
-    };
-    await axios.post("http://localhost:5000/sendMessage", null, {
-      params: request,
+    socket.on("New Message", (data: Message) => {
+      setMessages([...messages, data])
     });
+
+    socket.on("Messages", getMessages);
+
+    return () => {
+      socket.off("Messages");
+      socket.off("New Message");
+    };
+  }, [messages]);
+
+  const getMessages = () => {
+    socket.emit("Get Messages")
+  }
+  const sendMessage = async (message: Message) => {
+    socket.emit("Send Message", message);
   }
 
-  function changeMessage(event: any) {
-    setCurrentMessage(event.target.value);
+  const testMessage: Message = {
+    id: 0, sender: "dylan.a", receiver: "test", contents: "Test Contents", attachments: "google.com.au"
   }
-
   return (
     <div className="rig-chat">
       <RigDashboardNavbar />
@@ -47,19 +42,18 @@ function RigChatRoot() {
       <div className="messages">
         {messages
           ? messages.map((message: Message, i: number) => (
-              <RigChatMessage key={i} message={message} />
-            ))
+            <RigChatMessage key={i} message={message} />
+          ))
           : null}
       </div>
       <div className="rig-chat-controls">
         <input
-          onChange={() => changeMessage}
           type="text"
           className="form-control"
         ></input>
         <button
           className="btn btn-dark"
-          onClick={() => sendMessage(currentMessage as string)}
+          onClick={() => sendMessage(testMessage)}
         >
           Send
         </button>
