@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import RigChatMessage from "./RigChatMessage";
 import RigDashboardNavbar from "../dashboard/RigDashboardNavbar";
 import "../dashboard/RigDashboard.css";
@@ -12,24 +11,29 @@ function RigChatRoot() {
   const [messages, setMessages] = useState<Message[]>([]);
   const socket = io(process.env.REACT_APP_WEBSOCKET_URL as string);
 
+
+
   useEffect(() => {
     socket.on("New Message", (data: Message) => {
       setMessages([...messages, data])
     });
 
+    const getMessages = () => {
+      socket.emit("Get Messages")
+    }
+    
     socket.on("Messages", getMessages);
 
     return () => {
       socket.off("Messages");
       socket.off("New Message");
     };
-  }, [messages]);
 
-  const getMessages = () => {
-    socket.emit("Get Messages")
-  }
-  const sendMessage = async (message: Message) => {
-    socket.emit("Send Message", message);
+  }, [socket, messages]);
+
+
+  const sendMessage = () => {
+    socket.emit("Send Message", testMessage);
   }
 
   const testMessage: Message = {
@@ -53,7 +57,7 @@ function RigChatRoot() {
         ></input>
         <button
           className="btn btn-dark"
-          onClick={() => sendMessage(testMessage)}
+          onClick={() => sendMessage()}
         >
           Send
         </button>
