@@ -1,8 +1,6 @@
 import RigDashboardNavbar from "./RigDashboardNavbar";
 import "./RigDashboard.css";
 import RigDashboardContents from "./RigDashboardContents";
-import { useEffect } from "react";
-import axios from "axios";
 
 function RigDashboardRoot() {
     // Get updates once Dashboard has loaded
