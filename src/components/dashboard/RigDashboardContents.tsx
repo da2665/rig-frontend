@@ -1,12 +1,6 @@
 import "./RigDashboard.css";
 import RigDashboardTile from "./RigDashboardTile";
-
-interface Tile {
-    title: string;
-    contents: string;
-    buttonText: string;
-}
-
+import { Tile } from "./Types"; 
 
 function RigDashboardContents() {
     const tiles: Tile[] = [
@@ -29,7 +23,7 @@ function RigDashboardContents() {
 
     return (
         <div className="rig-dashboard-contents">
-            <h3>Rig v{process.env.REACT_APP_VERSION ? process.env.REACT_APP_VERSION : null }</h3>
+            <h3>Dashboard</h3>
             <div className="rig-dashboard-tiles">
             {tiles.map((tile, i) => (
                 <RigDashboardTile key={i} tile={tile} />
