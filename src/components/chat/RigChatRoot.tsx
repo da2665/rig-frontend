@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import RigChatMessage from "./RigChatMessage";
 import RigDashboardNavbar from "../dashboard/RigDashboardNavbar";
 import "../dashboard/RigDashboard.css";
@@ -11,34 +11,38 @@ function RigChatRoot() {
   const [messages, setMessages] = useState<Message[]>([]);
   const socket = io(process.env.REACT_APP_WEBSOCKET_URL as string);
 
-
+  const getMessages = useCallback(() => {
+    socket.emit("Get Messages");
+  }, []);
 
   useEffect(() => {
+    socket.connect();
     socket.on("New Message", (data: Message) => {
-      setMessages([...messages, data])
+      setMessages((prevMessage) => [...prevMessage, data]);
     });
 
-    const getMessages = () => {
-      socket.emit("Get Messages")
-    }
-    
-    socket.on("Messages", getMessages);
+    socket.on("Initial Messages", (data: Message[]) => {
+      setMessages(data);
+    });
+
+    getMessages();
 
     return () => {
-      socket.off("Messages");
-      socket.off("New Message");
+      socket.disconnect();
     };
-
-  }, [socket, messages]);
-
+  }, [socket, getMessages]);
 
   const sendMessage = () => {
     socket.emit("Send Message", testMessage);
-  }
+  };
 
   const testMessage: Message = {
-    id: 0, sender: "dylan.a", receiver: "test", contents: "Test Contents", attachments: "google.com.au"
-  }
+    id: 0,
+    sender: "dylan.a",
+    receiver: "test",
+    contents: "Test Contents",
+    attachments: "google.com.au",
+  };
   return (
     <div className="rig-chat">
       <RigDashboardNavbar />
@@ -46,19 +50,13 @@ function RigChatRoot() {
       <div className="messages">
         {messages
           ? messages.map((message: Message, i: number) => (
-            <RigChatMessage key={i} message={message} />
-          ))
+              <RigChatMessage key={i} message={message} />
+            ))
           : null}
       </div>
       <div className="rig-chat-controls">
-        <input
-          type="text"
-          className="form-control"
-        ></input>
-        <button
-          className="btn btn-dark"
-          onClick={() => sendMessage()}
-        >
+        <input type="text" className="form-control"></input>
+        <button className="btn btn-dark" onClick={() => sendMessage()}>
           Send
         </button>
       </div>
