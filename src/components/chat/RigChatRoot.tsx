@@ -10,10 +10,11 @@ import io from "socket.io-client";
 function RigChatRoot() {
   const [messages, setMessages] = useState<Message[]>([]);
   const socket = io(process.env.REACT_APP_WEBSOCKET_URL as string);
+  const [message, setMessage] = useState<string>("");
 
   const getMessages = useCallback(() => {
     socket.emit("Get Messages");
-  }, []);
+  }, [socket]);
 
   useEffect(() => {
     socket.connect();
@@ -30,19 +31,18 @@ function RigChatRoot() {
     return () => {
       socket.disconnect();
     };
-  }, [socket, getMessages]);
+  }, [socket]);
 
   const sendMessage = () => {
-    socket.emit("Send Message", testMessage);
+    socket.emit("Send Message", {
+      id: 0,
+      sender: "Dylan",
+      receiver: "Test User",
+      contents: message,
+      attachments: "",
+    });
   };
 
-  const testMessage: Message = {
-    id: 0,
-    sender: "dylan.a",
-    receiver: "test",
-    contents: "Test Contents",
-    attachments: "google.com.au",
-  };
   return (
     <div className="rig-chat">
       <RigDashboardNavbar />
@@ -55,7 +55,12 @@ function RigChatRoot() {
           : null}
       </div>
       <div className="rig-chat-controls">
-        <input type="text" className="form-control"></input>
+        <input
+          onChange={(e) => setMessage(e.target.value)}
+          type="text"
+          value={message}
+          className="form-control"
+        ></input>
         <button className="btn btn-dark" onClick={() => sendMessage()}>
           Send
         </button>
