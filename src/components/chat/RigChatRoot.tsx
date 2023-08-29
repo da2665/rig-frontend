@@ -14,24 +14,29 @@ function RigChatRoot() {
 
   const getMessages = useCallback(() => {
     socket.emit("Get Messages");
-  }, [socket]);
+  }, []);
 
+  
+  
   useEffect(() => {
     socket.connect();
+
+    getMessages();
+
     socket.on("New Message", (data: Message) => {
       setMessages((prevMessage) => [...prevMessage, data]);
     });
 
-    socket.on("Initial Messages", (data: Message[]) => {
+    socket.once("Initial Messages", (data: Message[]) => {
       setMessages(data);
     });
 
-    getMessages();
-
     return () => {
       socket.disconnect();
+      socket.off("New Message");
+      socket.off("Initial Messages");
     };
-  }, [socket]);
+  }, []);
 
   const sendMessage = () => {
     socket.emit("Send Message", {
@@ -57,11 +62,12 @@ function RigChatRoot() {
       <div className="rig-chat-controls">
         <input
           onChange={(e) => setMessage(e.target.value)}
+          placeholder="Type away..."
           type="text"
           value={message}
-          className="form-control"
+          className="form-control bg-dark"
         ></input>
-        <button className="btn btn-dark" onClick={() => sendMessage()}>
+        <button type="submit" className="btn btn-dark" onClick={() => sendMessage()}>
           Send
         </button>
       </div>
