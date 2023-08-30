@@ -5,7 +5,7 @@ import { faGauge, faGears, faHashtag, faMessage, faPeopleArrows, faPhone } from 
 import logo from "../../assets/logo.png";
 
 function RigDashboardNavbar() {
-    const modules: string[] = ["Dashboard", "Chat", "Posts", "Voice", "Friends", "Settings"];
+    const modules: string[] = ["Dashboard", "Messaging", "Channels", "Meetings", "Directory", "Settings"];
 
     function route(module: string): string {
         if (window.location.href.includes(module.toLowerCase())) {
@@ -20,13 +20,13 @@ function RigDashboardNavbar() {
         switch (module) {
             case "Dashboard":
                 return faGauge
-            case "Chat":
+            case "Messaging":
                 return faMessage
-            case "Posts":
+            case "Channels":
                 return faHashtag
-            case "Voice":
+            case "Meetings":
                 return faPhone
-            case "Friends":
+            case "Directory":
                 return faPeopleArrows
             case "Settings":
                 return faGears
