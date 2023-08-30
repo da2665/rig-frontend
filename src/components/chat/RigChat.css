@@ -3,20 +3,9 @@
     margin:10px;
     width:500px;
     height:36px;
-    background-color: black;
-    color:white;
+    background-color: slategrey;
+    color:black;
     border-radius:10px;
-}
-
-.msg-info {
-    left:0;
-    text-align: center;
-    width:100px;
-}
-.msg-contents {
-    text-align: center;
-    left: 110px;
-
 }
 
 .rig-chat-controls {
@@ -42,7 +31,6 @@
 
 .messages {
     position:fixed;
-    color: white;
     display: block;
     left:50%;
     top:50%;

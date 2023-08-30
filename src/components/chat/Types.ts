@@ -1,7 +1,7 @@
 export interface Message {
-    id: number;
-    sender: string;
-    receiver: string;
+    timestamp: number;
+    from: string;
+    to: string;
     contents: string;
     attachments: string;
 }

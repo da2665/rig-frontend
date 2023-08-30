@@ -8,7 +8,6 @@ function RigChatNavbar() {
     return (
         <div className="rig-chat-navbar">
             <p>Direct Messages</p>
-            <img src={logo} className="user-photo" alt="user"></img>
         </div>
     )
 }

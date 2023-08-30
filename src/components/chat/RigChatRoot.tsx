@@ -38,9 +38,8 @@ function RigChatRoot() {
 
   const sendMessage = () => {
     socket.emit("Send Message", {
-      id: 0,
-      sender: "Dylan",
-      receiver: "Test User",
+      from: "Dylan",
+      to: "Test User",
       contents: message,
       attachments: "",
     });
