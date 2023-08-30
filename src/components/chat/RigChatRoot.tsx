@@ -16,8 +16,6 @@ function RigChatRoot() {
     socket.emit("Get Messages");
   }, []);
 
-  
-  
   useEffect(() => {
     socket.connect();
 
@@ -55,8 +53,8 @@ function RigChatRoot() {
       <div className="messages">
         {messages
           ? messages.map((message: Message, i: number) => (
-              <RigChatMessage key={i} message={message} />
-            ))
+            <RigChatMessage key={i} message={message} />
+          ))
           : null}
       </div>
       <div className="rig-chat-controls">
