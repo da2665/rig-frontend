@@ -1,0 +1,54 @@
+.rig-auth-root {
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    background-color: black;
+    color:white;
+    width:500px;
+    height:500px;
+    border-radius:20px;
+    border: 3px solid white;
+}
+
+.rig-auth-inputs {
+    position:fixed;
+    width:65%;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+}
+
+input {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.rig-auth-buttons {
+    position:fixed;
+    top:75%;
+}
+
+#register {
+    position:fixed;
+    left:30%;
+}
+#login {
+    position:fixed;
+    right:30%;
+}
+
+img {
+    width:128px;
+    height:128px;
+    border-radius:10px;
+    border: 1px solid white;
+    position:fixed;
+    top:17%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+body {
+    background-color: black;
+}

@@ -3,7 +3,7 @@
     display: block;
     width:100%;
     height:100%;
-    background-color: rgba(0,0,0,0.9);
+    background-color: black;
 }
 
 .rig-navbar {
@@ -63,4 +63,14 @@
     margin-top:5px;
     border-radius: 15px;
     border: 1px solid white;
+}
+
+#logoff {
+    position:fixed;
+    left:0;
+    bottom:10px;
+}
+
+#logoff:hover {
+    color:red;
 }
