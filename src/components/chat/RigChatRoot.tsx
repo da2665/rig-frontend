@@ -11,35 +11,36 @@ function RigChatRoot() {
   const [messages, setMessages] = useState<Message[]>([]);
   const socket = io(process.env.REACT_APP_WEBSOCKET_URL as string);
   const [message, setMessage] = useState<string>("");
+  const currentUser = localStorage.getItem("Token");
+  console.log(currentUser);
 
   const getMessages = useCallback(() => {
     socket.emit("Get Messages");
-  }, []);
+  }, [])
 
   useEffect(() => {
-    socket.connect();
-
     getMessages();
 
+    socket.connect();
+
     socket.on("New Message", (data: Message) => {
-      setMessages((prevMessage) => [...prevMessage, data]);
+      console.log(data);
+      setMessages((prevMessages) => [...prevMessages, data]);
     });
 
     socket.once("Initial Messages", (data: Message[]) => {
       setMessages(data);
     });
-
     return () => {
       socket.disconnect();
-      socket.off("New Message");
-      socket.off("Initial Messages");
-    };
+    }
+
   }, []);
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     socket.emit("Send Message", {
       from: "Dylan",
-      to: "Test User",
+      to: "John",
       contents: message,
       attachments: "",
     });
